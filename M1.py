@@ -92,3 +92,32 @@ print(choice(my_list))
 print(sample(my_list, 5))
 print(sample(my_list, 10))
 
+# 1.2.1.10 Useful modules | platform
+
+from platform import platform
+print(platform())
+print(platform(1))
+print(platform(0, 1))
+
+# 1.2.1.11 Useful modules | platform
+from platform import machine
+print(machine())
+
+# 1.2.1.12 Useful modules | platform
+from platform import processor
+print(processor())
+
+from platform import system
+print(system())
+
+# 1.2.1.14 Useful modules | platform
+from platform import version
+print(version())
+
+# # 1.2.1.14 Useful modules | platform
+from platform import python_implementation, python_version_tuple
+
+print(python_implementation())
+
+for atr in python_version_tuple():
+    print(atr)
