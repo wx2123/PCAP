@@ -224,6 +224,66 @@ print("Apple juice".replace("juice", ""))
 print("This is it!".replace("is", "are", 1))
 print("This is it!".replace("is", "are", 2))
 
+# 2.5.1.4 Four simple programs
+
+# IBAN Validator.
+
+iban = input("Enter IBAN, please: ")
+iban = iban.replace(' ','')
+
+if not iban.isalnum():
+    print("You have entered invalid characters.")
+elif len(iban) < 15:
+    print("IBAN entered is too short.")
+elif len(iban) > 31:
+    print("IBAN entered is too long.")
+else:
+    iban = (iban[4:] + iban[0:4]).upper()
+    iban2 = ''
+    for ch in iban:
+        if ch.isdigit():
+            iban2 += ch
+        else:
+            iban2 += str(10 + ord(ch) - ord('A'))
+    iban = int(iban2)
+    if iban % 97 == 1:
+        print("IBAN entered is valid.")
+    else:
+        print("IBAN entered is invalid.")
 
 
+# 2.5.1.6 LAB: Improving the Caesar cipher
+checkText = False
+while checkText != True:
+    text = input("Enter your message: ")
+    if text != '':
+        checkText = True
+        
+checkShift = False
+shiftNumber = list(range(1,26))
+while checkShift != True:
+    try:
+        shift = int(input("Enter your shift number(1~25): "))
+        if shift in shiftNumber:
+            checkShift = True
+    except:
+        print("Please Enter number between 1 and 25!!")
+        continue      
 
+cipher = ''
+for char in text:
+    if not char.isalpha():
+        cipher += char
+    if char.islower():
+        code = ord(char) + shift
+        if code > ord('z'):
+            code = ord('a') + (code - ord('z') - 1)
+        cipher += chr(code)
+        
+    if char.isupper():
+        code = ord(char) + shift
+        if code > ord('Z'):
+            code = ord('A') + (code -ord('Z') - 1)
+        cipher += chr(code)
+
+print(cipher)
