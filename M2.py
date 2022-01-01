@@ -287,3 +287,119 @@ for char in text:
         cipher += chr(code)
 
 print(cipher)
+
+
+# 2.7.1.4 The anatomy of exceptions
+def bad_fun(n):
+    try:
+        return 1 / n
+    except ArithmeticError:
+        print("Arithmetic Problem!")
+    return None
+
+bad_fun(0)
+
+print("THE END.")
+
+# 
+def bad_fun(n):
+    return 1 / n
+
+try:
+    bad_fun(0)
+except ArithmeticError:
+    print("What happened? An exception was raised!")
+
+print("THE END.")
+
+# 2.7.1.5 The anatomy of exceptions | raise
+def bad_fun(n):
+    raise ZeroDivisionError
+
+try:
+    bad_fun(0)
+except ArithmeticError:
+    print("What happened? An error?")
+
+print("THE END.")
+
+# 2.7.1.8 SECTION SUMMARY
+
+def foo(x):
+    assert x
+    return 1/x
+
+
+try:
+    print(foo(0))
+except ZeroDivisionError:
+    print("zero")
+except:
+    print("some")
+
+
+# 2.8.1.1 Useful exceptions
+from math import tan, radians
+angle = int(input('Enter integral angle in degrees: '))
+
+# We must be sure that angle != 90 + k * 180
+assert angle % 180 != 90
+print(tan(radians(angle)))
+
+
+# The code shows an extravagant way
+# of leaving the loop.
+
+the_list = [1, 2, 3, 4, 5]
+ix = 0
+do_it = True
+
+while do_it:
+    try:
+        print(the_list[ix])
+        ix += 1
+    except IndexError:
+        do_it = False
+print('Done')
+
+# 2.8.1.2 Useful exceptions
+
+# This code cannot be terminated
+# by pressing Ctrl-C.
+
+from time import sleep
+
+seconds = 0
+
+while True:
+    try:
+        print(seconds)
+        seconds += 1
+        sleep(1)
+    except KeyboardInterrupt:
+        print("Don't do that!")
+
+
+# 2.8.1.3 Useful exceptions
+
+# One of these imports will fail - which one?
+try:
+    import math
+    import time
+    import abracadabra
+
+except:
+    print('One of your imports has failed.')
+
+# How to abuse the dictionary
+# and how to deal with it?
+dictionary = { 'a': 'b', 
+               'b': 'c', 
+               'c': 'd' }
+ch = 'a'
+try:
+    while True:
+        ch = dictionary[ch]
+        print(ch)
+except KeyError:
+    print('No such key:', ch)
