@@ -403,3 +403,12 @@ try:
         print(ch)
 except KeyError:
     print('No such key:', ch)
+    
+    
+print(ord('c') - ord('a'))
+print(float('1,3'))
+
+print("Mike" > "Mikey")
+
+x = '\''
+print(len(x))
