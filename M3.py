@@ -28,3 +28,11 @@ push(1)
 print(pop())
 print(pop())
 print(pop())
+
+# 3.2.1.4 A short journey from procedural to object approach
+
+class Stack:  # Defining the Stack class.
+    def __init__(self):  # Defining the constructor function.
+        print("Hi!")
+
+stack_object = Stack()  # Instantiating the object.
