@@ -10,21 +10,17 @@ Created on Sun Jan  2 22:04:05 2022
 
 stack = []
 
-
 def push(val):
     stack.append(val)
-
 
 def pop():
     val = stack[-1]
     del stack[-1]
     return val
 
-
 push(3)
 push(2)
 push(1)
-
 print(pop())
 print(pop())
 print(pop())
@@ -34,9 +30,22 @@ print(pop())
 class Stack:  # Defining the Stack class.
     def __init__(self):  # Defining the constructor function.
         print("Hi!")
-
 stack_object = Stack()  # Instantiating the object.
 
+
+# 3.2.1.5 A short journey from procedural to object approach
+class Stack:
+    def __init__(self):
+        self.stack_list = []
+stack_object = Stack()
+print(len(stack_object.stack_list))
+
+# 3.2.1.6 A short journey from procedural to object approach
+class Stack:
+    def __init__(self):
+        self.__stack_list = []
+stack_object = Stack()
+print(len(stack_object.__stack_list))
 
 
 # 3.2.1.7 A short journey from procedural to object approach
@@ -44,16 +53,13 @@ class Stack:
     def __init__(self):
         self.__stack_list = []
 
-
     def push(self, val):
         self.__stack_list.append(val)
-
 
     def pop(self):
         val = self.__stack_list[-1]
         del self.__stack_list[-1]
         return val
-
 
 stack_object = Stack()
 
