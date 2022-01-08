@@ -233,4 +233,44 @@ print(example_object_1.__dict__, example_object_1._ExampleClass__counter)
 print(example_object_2.__dict__, example_object_2._ExampleClass__counter)
 print(example_object_3.__dict__, example_object_3._ExampleClass__counter)
 
+# 3.3.1.5 OOP: Properties
+class ExampleClass:
+    varia = 1
+    def __init__(self, val):
+        ExampleClass.varia = val
 
+print(ExampleClass.__dict__)
+example_object = ExampleClass(2)
+
+print(ExampleClass.__dict__)
+print(example_object.__dict__)
+
+# 3.3.1.6 OOP: Properties
+class ExampleClass:
+    def __init__(self, val):
+        if val % 2 != 0:
+            self.a = 1
+        else:
+            self.b = 1
+
+example_object = ExampleClass(1)
+
+print(example_object.a)
+print(example_object.b)
+
+
+# 3.3.1.7 OOP: Properties
+class ExampleClass:
+    def __init__(self, val):
+        if val % 2 != 0:
+            self.a = 1
+        else:
+            self.b = 1
+
+example_object = ExampleClass(1)
+print(example_object.a)
+
+try:
+    print(example_object.b)
+except AttributeError:
+    pass
