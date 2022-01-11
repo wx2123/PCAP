@@ -331,3 +331,109 @@ obj = Classy()
 obj.method(1)
 obj.method(2)
 obj.method(3)
+
+# 3.4.1.2 OOP: Methods
+class Classy:
+    varia = 2
+    def method(self):
+        print(self.varia, self.var)
+obj = Classy()
+obj.var = 3
+obj.method()
+
+
+class Classy:
+    def other(self):
+        print("other")
+
+    def method(self):
+        print("method")
+        self.other()
+
+obj = Classy()
+obj.method()
+
+
+# 3.4.1.3 OOP: Methods
+class Classy:
+    def __init__(self, value):
+        self.var = value
+
+obj_1 = Classy("object")
+
+print(obj_1.var)
+
+
+
+# 3.4.1.5 OOP: Methods
+class Classy:
+    varia = 1
+    def __init__(self):
+        self.var = 2
+
+    def method(self):
+        pass
+
+    def __hidden(self):
+        pass
+
+obj = Classy()
+print(obj.__dict__)
+print(Classy.__dict__)
+
+
+# 3.4.1.6 OOP: Methods
+class Classy:
+    pass
+
+print(Classy.__name__)
+obj = Classy()
+print(type(obj).__name__)
+
+
+# 3.4.1.8 OOP: Methods
+class SuperOne:
+    pass
+
+class SuperTwo:
+    pass
+
+class Sub(SuperOne, SuperTwo):
+    pass
+
+def printBases(cls):
+    print('( ', end='')
+
+    for x in cls.__bases__:
+        print(x.__name__, end=' ')
+    print(')')
+
+printBases(SuperOne)
+printBases(SuperTwo)
+printBases(Sub)
+
+# 3.4.1.10 OOP: Methods
+
+class MyClass:
+    pass
+
+obj = MyClass()
+obj.a = 1
+obj.b = 2
+obj.i = 3
+obj.ireal = 3.5
+obj.integer = 4
+obj.z = 5
+
+def incIntsI(obj):
+    for name in obj.__dict__.keys():
+        if name.startswith('i'):
+            val = getattr(obj, name)
+            if isinstance(val, int):
+                setattr(obj, name, val + 1)
+print(obj.__dict__)
+incIntsI(obj)
+print(obj.__dict__)
+
+
+
