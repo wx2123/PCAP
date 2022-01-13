@@ -714,3 +714,63 @@ class WheeledVehicle:
         time.sleep(0.25)
         turn_front_wheels(left, False)
 
+# 3.5.1.17 OOP Fundamentals: Inheritance
+import time
+
+class Vehicle:
+    def change_direction(left, on):
+        pass
+
+    def turn(left):
+        change_direction(left, True)
+        time.sleep(0.25)
+        change_direction(left, False)
+
+
+class TrackedVehicle(Vehicle):
+    def control_track(left, stop):
+        pass
+
+    def change_direction(left, on):
+        control_track(left, on)
+
+
+class WheeledVehicle(Vehicle):
+    def turn_front_wheels(left, on):
+        pass
+
+    def change_direction(left, on):
+        turn_front_wheels(left, on)
+
+
+# 3.5.1.18 OOP Fundamentals: Inheritance
+import time
+
+class Tracks:
+    def change_direction(self, left, on):
+        print("tracks: ", left, on)
+
+
+class Wheels:
+    def change_direction(self, left, on):
+        print("wheels: ", left, on)
+
+
+class Vehicle:
+    def __init__(self, controller):
+        self.controller = controller
+
+    def turn(self, left):
+        self.controller.change_direction(left, True)
+        time.sleep(0.25)
+        self.controller.change_direction(left, False)
+
+
+wheeled = Vehicle(Wheels())
+tracked = Vehicle(Tracks())
+
+wheeled.turn(True)
+tracked.turn(False)
+
+
+
