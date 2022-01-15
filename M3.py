@@ -773,4 +773,189 @@ wheeled.turn(True)
 tracked.turn(False)
 
 
+# 3.5.1.20 OOP Fundamentals: MRO
+
+class Top:
+    def m_top(self):
+        print("top")
+
+
+class Middle(Top):
+    def m_middle(self):
+        print("middle")
+
+
+class Bottom(Middle):
+    def m_bottom(self):
+        print("bottom")
+
+
+object = Bottom()
+object.m_bottom()
+object.m_middle()
+object.m_top()
+
+
+
+
+class Mouse:
+    def __init__(self, name):
+        self.name = name
+
+    def __str__(self):
+        return "My name is " + self.name
+
+class AncientMouse(Mouse):
+    def __str__(self):
+        return "Meum nomen est " + self.name
+
+mus = AncientMouse("Caesar")  # Prints "Meum nomen est Caesar"
+print(mus)
+
+
+# 3.5.1.23 SECTION SUMMARY 2/2
+class Dog:
+    kennel = 0
+    def __init__(self, breed):
+        self.breed = breed
+        Dog.kennel += 1
+    def __str__(self):
+        return self.breed + " says: Woof!"
+
+
+class SheepDog(Dog):
+    def __str__(self):
+        return super().__str__() + " Don't run away, Little Lamb!"
+
+
+class GuardDog(Dog):
+    def __str__(self):
+        return super().__str__() + " Stay where you are, Mister Intruder!"
+
+
+rocky = SheepDog("Collie")
+luna = GuardDog("Dobermann")
+
+# Ex1
+print(rocky)
+print(luna)
+
+# Ex2
+print(issubclass(SheepDog, Dog), issubclass(SheepDog, GuardDog))
+print(isinstance(rocky, GuardDog), isinstance(luna, GuardDog))
+
+# Ex3
+print(luna is luna, rocky is luna)
+print(rocky.kennel)
+
+# Ex4
+class LowlandDog(SheepDog):
+        def __str__(self):
+            return super().__str__() + " Woof! I don't like mountains!"
+    
+    
+# 3.6.1.1 Exceptions once again
+def reciprocal(n):
+    try:
+        n = 1 / n
+    except ZeroDivisionError:
+        print("Division failed")
+        return None
+    else:
+        print("Everything went fine")
+        return n
+print(reciprocal(2))
+print(reciprocal(0))
+
+# 3.6.1.2 Exceptions once again    
+def reciprocal(n):
+    try:
+        n = 1 / n
+    except ZeroDivisionError:
+        print("Division failed")
+        n = None
+    else:
+        print("Everything went fine")
+    finally:
+        print("It's time to say goodbye")
+        return n
+
+print(reciprocal(2))
+print(reciprocal(0))
+
+# 3.6.1.3 Exceptions once again
+try:
+    i = int("Hello!")
+except Exception as e:
+    print(e)
+    print(e.__str__())
+
+
+# 3.6.1.4 Exceptions once again
+def print_exception_tree(thisclass, nest = 0):
+    if nest > 1:
+        print("   |" * (nest - 1), end="")
+    if nest > 0:
+        print("   +---", end="")
+
+    print(thisclass.__name__)
+
+    for subclass in thisclass.__subclasses__():
+        print_exception_tree(subclass, nest + 1)
+print_exception_tree(BaseException)
+
+# 3.6.1.5 Exceptions once again
+def print_args(args):
+    lng = len(args)
+    if lng == 0:
+        print("")
+    elif lng == 1:
+        print(args[0])
+    else:
+        print(str(args))
+
+try:
+    raise Exception
+except Exception as e:
+    print(e, e.__str__(), sep=' : ' ,end=' : ')
+    print_args(e.args)
+
+try:
+    raise Exception("my exception")
+except Exception as e:
+    print(e, e.__str__(), sep=' : ', end=' : ')
+    print_args(e.args)
+
+try:
+    raise Exception("my", "exception")
+except Exception as e:
+    print(e, e.__str__(), sep=' : ', end=' : ')
+    print_args(e.args)
+
+
+# 3.6.1.6 Exceptions once again
+class MyZeroDivisionError(ZeroDivisionError):	
+    pass
+
+
+def do_the_division(mine):
+    if mine:
+        raise MyZeroDivisionError("some worse news")
+    else:		
+        raise ZeroDivisionError("some bad news")
+
+
+for mode in [False, True]:
+    try:
+        do_the_division(mode)
+    except ZeroDivisionError:
+        print('Division by zero')
+
+for mode in [False, True]:
+    try:
+        do_the_division(mode)
+    except MyZeroDivisionError:
+        print('My division by zero')
+    except ZeroDivisionError:
+        print('Original division by zero')
 
