@@ -142,7 +142,145 @@ for x in range(10):
 
 print(the_list)
 
+# 4.1.1.8 Generators and closures
+
+the_list = [1 if x % 2 == 0 else 0 for x in range(10)]
+
+print(the_list)
+
+# ---
+the_list = [1 if x % 2 == 0 else 0 for x in range(10)]
+the_generator = (1 if x % 2 == 0 else 0 for x in range(10))
+
+for v in the_list:
+    print(v, end=" ")
+print()
+
+for v in the_generator:
+    print(v, end=" ")
+print()
+
+len(the_list)
+len(the_generator)
 
 
+for v in [1 if x % 2 == 0 else 0 for x in range(10)]:
+    print(v, end=" ")
+print()
+
+for v in (1 if x % 2 == 0 else 0 for x in range(10)):
+    print(v, end=" ")
+print()
 
 
+# 4.1.1.9 Generators and closures
+two = lambda: 2
+sqr = lambda x: x * x
+pwr = lambda x, y: x ** y
+
+for a in range(-2, 3):
+    print(sqr(a), end=" ")
+    print(pwr(a, two()))
+
+
+# 4.1.1.10 Generators and closures
+def print_function(args, fun):
+    for x in args:
+        print('f(', x,')=', fun(x), sep='')
+
+def poly(x):
+    return 2 * x**2 - 4 * x + 2
+
+print_function([x for x in range(-2, 3)], poly)
+
+
+#---
+def print_function(args, fun):
+    for x in args:
+        print('f(', x,')=', fun(x), sep='')
+
+print_function([x for x in range(-2, 3)], lambda x: 2 * x**2 - 4 * x + 2)
+
+# 4.1.1.11 Generators and closures
+list_1 = [x for x in range(5)]
+list_2 = list(map(lambda x: 2 ** x, list_1))
+print(list_2)
+
+for x in map(lambda x: x * x, list_2):
+    print(x, end=' ')
+print()
+
+# 4.1.1.12 Generators and closures
+from random import seed, randint
+
+seed()
+data = [randint(-10,10) for x in range(5)]
+filtered = list(filter(lambda x: x > 0 and x % 2 == 0, data))
+
+print(data)
+print(filtered)
+
+
+# 4.1.1.13 Generators and closures
+def outer(par):
+    loc = par
+
+    def inner():
+        return loc
+    return inner
+var = 1
+fun = outer(var)
+print(fun())
+
+# 4.1.1.14 Generators and closures
+def make_closure(par):
+    loc = par
+
+    def power(p):
+        return p ** loc
+    return power
+
+fsqr = make_closure(2)
+fcub = make_closure(3)
+
+for i in range(5):
+    print(i, fsqr(i), fcub(i))
+
+for x in (el * 2 for el in range(5)):
+    print(x)
+
+# 4.1.1.15 Generators and closures
+
+# Ex1
+class Vowels:
+    def __init__(self):
+        self.vow = "aeiouy "  # Yes, we know that y is not always considered a vowel.
+        self.pos = 0
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.pos == len(self.vow):
+            raise StopIteration
+        self.pos += 1
+        return self.vow[self.pos - 1]
+
+vowels = Vowels()
+for v in vowels:
+    print(v, end=' ')
+
+# ex2
+any_list = [1, 2, 3, 4]
+even_list = list(map(lambda x: x | 1, any_list)) # | is bitwise OR
+print(even_list)
+
+# Ex3
+def replace_spaces(replacement='*'):
+    def new_replacement(text):
+        return text.replace(' ', replacement)
+    return new_replacement
+
+
+stars = replace_spaces()
+print(stars("And Now for Something Completely Different"))
