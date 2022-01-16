@@ -959,3 +959,80 @@ for mode in [False, True]:
     except ZeroDivisionError:
         print('Original division by zero')
 
+# 3.6.1.7 Exceptions once again
+class PizzaError(Exception):
+    def __init__(self, pizza, message):
+        Exception.__init__(self, message)
+        self.pizza = pizza
+
+class TooMuchCheeseError(PizzaError):
+    def __init__(self, pizza, cheese, message):
+        PizzaError._init__(self, pizza, message)
+        self.cheese = cheese
+
+# 3.6.1.8 Exceptions once again
+class PizzaError(Exception):
+    def __init__(self, pizza, message):
+        Exception.__init__(self, message)
+        self.pizza = pizza
+
+class TooMuchCheeseError(PizzaError):
+    def __init__(self, pizza, cheese, message):
+        PizzaError.__init__(self, pizza, message)
+        self.cheese = cheese
+
+def make_pizza(pizza, cheese):
+    if pizza not in ['margherita', 'capricciosa', 'calzone']:
+        raise PizzaError(pizza, "no such pizza on the menu")
+    if cheese > 100:
+        raise TooMuchCheeseError(pizza, cheese, "too much cheese")
+    print("Pizza ready!")
+
+for (pz, ch) in [('calzone', 0), ('margherita', 110), ('mafia', 20)]:
+    try:
+        make_pizza(pz, ch)
+    except TooMuchCheeseError as tmce:
+        print(tmce, ':', tmce.cheese)
+    except PizzaError as pe:
+        print(pe, ':', pe.pizza)
+
+
+# 3.6.1.9 
+try:
+    assert __name__ == "__main__"
+except:
+    print("fail", end=' ')
+else:
+    print("success", end=' ')
+finally:
+    print("done")
+    
+    
+# Ex3
+#import math
+
+class NewValueError(ValueError):
+    def __init__(self, name, color, state):
+        self.data = (name, color, state)
+
+try:
+    raise NewValueError("Enemy warning", "Red alert", "High readiness")
+except NewValueError as nve:
+    for arg in nve.args:
+        print(arg, end='! ')
+
+import math
+math.pow(2)
+
+# Test
+class A:
+    X=0
+    def __int__(self, v=0):
+        self.Y = v
+        A.X +=v
+        
+a = A()
+print(a)
+b = A(1)
+c = A(2)
+print(c.X)
