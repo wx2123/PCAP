@@ -284,3 +284,189 @@ def replace_spaces(replacement='*'):
 
 stars = replace_spaces()
 print(stars("And Now for Something Completely Different"))
+
+# 4.3.1.2 Working with real files
+
+from os import strerror
+
+try:
+    cnt = 0
+    s = open("text.txt", "rt")
+    #"D:\\myfiles\welcome.txt"
+    #s = open('d:/data/text.txt', "rt")
+    ch = s.read(1)
+    while ch != '':
+        print(ch, end='')
+        cnt += 1
+        ch = s.read(1)
+    s.close()
+    print("\n\nCharacters in file:", cnt)
+except IOError as e:
+    print("I/O error occurred: ", strerror(e.errno))
+
+
+import os
+print(os.path.expanduser('~'))
+
+# # 4.3.1.3 Working with real files
+from os import strerror
+
+try:
+    cnt = 0
+    s = open('text.txt', "rt")
+    content = s.read()
+    for ch in content:
+        print(ch, end='')
+        cnt += 1
+    s.close()
+    print("\n\nCharacters in file:", cnt)
+except IOError as e:
+    print("I/O error occurred: ", strerror(e.errno))
+
+
+# 4.3.1.6 Working with real files
+
+from os import strerror
+
+try:
+	ccnt = lcnt = 0
+	for line in open('text.txt', 'rt'):
+		lcnt += 1
+		for ch in line:
+			print(ch, end='')
+			ccnt += 1
+	print("\n\nCharacters in file:", ccnt)
+	print("Lines in file:     ", lcnt)
+except IOError as e:
+	print("I/O error occurred: ", strerror(e.errno))
+
+# 4.3.1.7 Working with real files
+
+from os import strerror
+
+try:
+	fo = open('newtext.txt', 'wt') # A new file (newtext.txt) is created.
+	for i in range(10):
+		s = "line #" + str(i+1) + "\n"
+		for ch in s:
+			fo.write(ch)
+	fo.close()
+except IOError as e:
+	print("I/O error occurred: ", strerror(e.errno))
+
+
+# 4.3.1.8 Working with real files
+from os import strerror
+
+try:
+    fo = open('newtext8.txt', 'wt')
+    for i in range(10):
+        fo.write("line #" + str(i+1) + "\n")
+    fo.close()
+except IOError as e:
+    print("I/O error occurred: ", strerror(e.errno))
+
+
+data = bytearray(10)
+
+# 4.3.1.10 Working with real files
+
+data = bytearray(10)
+
+for i in range(len(data)):
+    data[i] = 10 - i
+
+for b in data:
+    print(hex(b))
+
+
+# 4.3.1.10 Working with real files
+
+from os import strerror
+
+data = bytearray(10)
+
+for i in range(len(data)):
+    data[i] = 10 + i
+
+try:
+    bf = open('file2.bin', 'wb')
+    bf.write(data)
+    bf.close()
+except IOError as e:
+    print("I/O error occurred:", strerror(e.errno))
+
+# Your code that reads bytes from the stream should go here.
+from os import strerror
+
+data = bytearray(10)
+
+try:
+    bf = open('file.bin', 'rb')
+    bf.readinto(data)
+    bf.close()
+
+    for b in data:
+        print(hex(b), end=' ')
+except IOError as e:
+    print("I/O error occurred:", strerror(e.errno))
+
+# 4.3.1.12 Working with real files
+from os import strerror
+
+data = bytearray(10)
+
+for i in range(len(data)):
+    data[i] = 10 + i
+
+try:
+    bf = open('file.bin', 'wb')
+    bf.write(data)
+    bf.close()
+except IOError as e:
+    print("I/O error occurred:", strerror(e.errno))
+
+# Your code that reads bytes from the stream should go here.
+
+from os import strerror
+
+try:
+    bf = open('file.bin', 'rb')
+    data = bytearray(bf.read())
+    bf.close()
+
+    for b in data:
+        print(hex(b), end=' ')
+
+except IOError as e:
+    print("I/O error occurred:", strerror(e.errno))
+
+
+# 4.3.1.13 Working with real files
+from os import strerror
+
+data = bytearray(10)
+
+for i in range(len(data)):
+    data[i] = 10 + i
+
+try:
+    bf = open('file.bin', 'wb')
+    bf.write(data)
+    bf.close()
+except IOError as e:
+    print("I/O error occurred:", strerror(e.errno))
+
+# Your code that reads bytes from the stream should go here.
+try:
+    bf = open('file.bin', 'rb')
+    data = bytearray(bf.read(5))
+    bf.close()
+
+    for b in data:
+        print(hex(b), end=' ')
+
+except IOError as e:
+    print("I/O error occurred:", strerror(e.errno))
+
+
