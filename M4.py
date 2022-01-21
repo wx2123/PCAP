@@ -512,3 +512,31 @@ import os
 os.mkdir("my_first_directory")
 print(os.listdir())
 
+
+# # 4.4.1.4 The os module
+import os
+
+os.makedirs("my_first_directory/my_second_directory")
+os.chdir("my_first_directory")
+print(os.listdir())
+
+
+# # # 4.4.1.5 The os module
+import os
+
+os.makedirs("my_first_directory/my_second_directory")
+os.chdir("my_first_directory")
+print(os.getcwd())
+os.chdir("my_second_directory")
+print(os.getcwd())
+
+# 4.4.1.7 The os module
+import os
+
+returned_value = os.system("mkdir my_first_directory")
+print(returned_value)
+
+
+# 4.4.1.8 The os module: LAB
+
+import os
