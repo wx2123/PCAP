@@ -605,3 +605,43 @@ print("Hour:", t.hour)
 print("Minute:", t.minute)
 print("Second:", t.second)
 print("Microsecond:", t.microsecond)
+
+
+# 4.5.1.8 The datetime module
+import time
+
+class Student:
+    def take_nap(self, seconds):
+        print("I'm very tired. I have to take a nap. See you later.")
+        time.sleep(seconds)
+        print("I slept well! I feel great!")
+
+student = Student()
+student.take_nap(5)
+
+# 4.5.1.9 The datetime module
+import time
+
+timestamp = 1572879180
+print(time.ctime(timestamp))
+
+
+import time
+print(time.ctime())
+
+# 4.5.1.10 The datetime module
+import time
+
+timestamp = 1572879180
+print(time.gmtime(timestamp))
+print(time.localtime(timestamp))
+
+
+# 4.5.1.11 The datetime module
+import time
+
+timestamp = 1572879180
+st = time.gmtime(timestamp)
+
+print(time.asctime(st))
+print(time.mktime((2019, 11, 4, 14, 53, 0, 0, 308, 0)))
