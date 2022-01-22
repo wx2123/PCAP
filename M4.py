@@ -540,3 +540,68 @@ print(returned_value)
 # 4.4.1.8 The os module: LAB
 
 import os
+
+
+
+# 4.5.1.2 The datetime module
+
+from datetime import date
+
+today = date.today()
+
+print("Today:", today)
+print("Year:", today.year)
+print("Month:", today.month)
+print("Day:", today.day)
+
+
+from datetime import date
+
+my_date = date(2019, 11, 4)
+print(my_date)
+
+# 4.5.1.3 The datetime module
+from datetime import date
+import time
+
+timestamp = time.time()
+print("Timestamp:", timestamp)
+
+d = date.fromtimestamp(timestamp)
+print("Date:", d)
+
+
+# 4.5.1.4 The datetime module
+from datetime import date
+
+d = date.fromisoformat('2019-11-04')
+print(d)
+
+# 4.5.1.5 The datetime module
+from datetime import date
+d = date(1991, 2, 5)
+print(d)
+d = d.replace(year=1992, month=1, day=16)
+print(d)
+
+# 4.5.1.6 The datetime module
+from datetime import date
+
+d = date(2019, 11, 4)
+print(d.weekday())
+
+
+from datetime import date
+
+d = date(2019, 11, 4)
+print(d.isoweekday())
+
+
+# 4.5.1.7 The datetime module
+from datetime import time
+t = time(14, 53, 20, 1)
+print("Time:", t)
+print("Hour:", t.hour)
+print("Minute:", t.minute)
+print("Second:", t.second)
+print("Microsecond:", t.microsecond)
