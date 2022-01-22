@@ -661,3 +661,26 @@ from datetime import datetime
 print("today:", datetime.today())
 print("now:", datetime.now())
 print("utcnow:", datetime.utcnow())
+
+
+# 4.5.1.14 The datetime and time modules (continued)
+
+from datetime import datetime
+dt = datetime(2020, 10, 4, 14, 55)
+print("Timestamp:", dt.timestamp())
+
+# 4.5.1.15 The datetime and time modules (continued)
+from datetime import date
+
+d = date(2020, 1, 4)
+print(d.strftime('%Y/%m/%d'))
+
+# 4.5.1.16 The datetime and time modules (continued)
+from datetime import time
+from datetime import datetime
+
+t = time(14, 53)
+print(t.strftime("%H:%M:%S"))
+
+dt = datetime(2020, 11, 4, 14, 53)
+print(dt.strftime("%y/%B/%d %H:%M:%S"))
