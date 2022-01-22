@@ -684,3 +684,131 @@ print(t.strftime("%H:%M:%S"))
 
 dt = datetime(2020, 11, 4, 14, 53)
 print(dt.strftime("%y/%B/%d %H:%M:%S"))
+
+dt = datetime(2020, 11, 4, 14, 53)
+print(dt.strftime("%Y/%B/%d %H:%M:%S"))
+
+# 4.5.1.17 The datetime and time modules (continued)
+import time
+
+timestamp = 1572879180
+st = time.gmtime(timestamp)
+
+print(time.strftime("%Y/%m/%d %H:%M:%S", st))
+print(time.strftime("%Y/%m/%d %H:%M:%S"))
+
+# 4.5.1.18 The datetime and time modules (continued)
+from datetime import datetime
+print(datetime.strptime("2019/11/04 14:53:00", "%Y/%m/%d %H:%M:%S"))
+
+import time
+print(time.strptime("2019/11/04 14:53:00", "%Y/%m/%d %H:%M:%S"))
+
+
+# 4.5.1.19 The datetime and time modules (continued)
+from datetime import date
+from datetime import datetime
+
+d1 = date(2020, 11, 4)
+d2 = date(2019, 11, 4)
+
+print(d1 - d2)
+
+dt1 = datetime(2020, 11, 4, 0, 0, 0)
+dt2 = datetime(2019, 11, 4, 14, 53, 0)
+
+print(dt1 - dt2)
+
+# 4.5.1.20 The datetime and time modules (continued)
+from datetime import timedelta
+
+delta = timedelta(weeks=2, days=2, hours=3)
+print(delta)
+
+
+
+from datetime import timedelta
+
+delta = timedelta(weeks=2, days=2, hours=1)
+print("Days:", delta.days)
+print("Seconds:", delta.seconds)
+print("Microseconds:", delta.microseconds)
+
+# 4.5.1.21 The datetime and time modules (continued)
+
+from datetime import timedelta
+from datetime import date
+from datetime import datetime
+
+delta = timedelta(weeks=2, days=2, hours=2)
+print(delta)
+
+delta2 = delta * 2
+print(delta2)
+
+d = date(2019, 10, 4) + delta2
+print(d)
+
+dt = datetime(2019, 10, 4, 14, 53) + delta2
+print(dt)
+
+
+#4.5.1.22 The datetime and time modules: LAB
+dt = datetime(2020, 11, 4, 14, 53)
+print(dt.strftime("%y/%m/%d %H:%M:%S"))
+print(dt.strftime("%y/%B/%d %H:%M:%S"))
+
+
+
+#4.5.1.23 
+from datetime import date
+
+my_date = date(2020, 9, 29)
+print("Year:", my_date.year) # Year: 2020
+print("Month:", my_date.month) # Month: 9
+print("Day:", my_date.day) # Day: 29
+
+
+from datetime import date
+print("Today:", date.today()) # Displays: Today: 2020-09-29
+
+from datetime import date
+import time
+timestamp = time.time()
+d = date.fromtimestamp(timestamp)
+
+
+from datetime import date
+
+d = date(2020, 9, 29)
+print(d.strftime('%Y/%m/%d')) # Displays: 2020/09/29
+
+
+from datetime import date
+
+d1 = date(2020, 11, 4)
+d2 = date(2019, 11, 4)
+
+d = d1 - d2
+print(d) # Displays: 366 days, 0:00:00.
+print(d * 2) # Displays: 732 days, 0:00:00.
+
+from datetime import time
+
+t = time(14, 39)
+print(t.strftime("%H:%M:%S"))
+
+
+# 4.6.1.2 The calendar module
+
+import calendar
+print(calendar.calendar(2022))
+
+
+import calendar
+calendar.prcal(2020)
+
+
+# 4.6.1.2 The calendar module
+import calendar
+print(calendar.month(2020, 11))
