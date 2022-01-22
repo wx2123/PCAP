@@ -645,3 +645,19 @@ st = time.gmtime(timestamp)
 
 print(time.asctime(st))
 print(time.mktime((2019, 11, 4, 14, 53, 0, 0, 308, 0)))
+
+# 4.5.1.12 The datetime module
+from datetime import datetime
+
+dt = datetime(2019, 11, 4, 14, 53)
+
+print("Datetime:", dt)
+print("Date:", dt.date())
+print("Time:", dt.time())
+
+# 4.5.1.13 The datetime module
+from datetime import datetime
+
+print("today:", datetime.today())
+print("now:", datetime.now())
+print("utcnow:", datetime.utcnow())
