@@ -812,3 +812,24 @@ calendar.prcal(2020)
 # 4.6.1.2 The calendar module
 import calendar
 print(calendar.month(2020, 11))
+
+
+# 4.6.1.4 The calendar module
+import calendar
+calendar.setfirstweekday(calendar.SUNDAY)
+calendar.prmonth(2020, 12)
+
+# 4.6.1.5 The calendar module
+import calendar
+print(calendar.weekday(2020, 12, 24))
+print(calendar.weekday(2022, 1, 22))
+
+# 4.6.1.6 The calendar module
+import calendar
+print(calendar.weekheader(3))
+
+# 4.6.1.7 The calendar module
+import calendar
+
+print(calendar.isleap(2020))
+print(calendar.leapdays(2010, 2021))  # Up to but not including 2021.
