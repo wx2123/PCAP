@@ -833,3 +833,50 @@ import calendar
 
 print(calendar.isleap(2020))
 print(calendar.leapdays(2010, 2021))  # Up to but not including 2021.
+
+# 4.6.1.9 The calendar module
+import calendar  
+
+c = calendar.Calendar(calendar.SUNDAY)
+
+for weekday in c.iterweekdays():
+    print(weekday, end=" ")
+
+
+# 4.6.1.10 The calendar module
+import calendar  
+
+c = calendar.Calendar()
+
+for date1 in c.itermonthdates(2019, 11):
+    print(date1, end=" ")
+
+# 4.6.1.11 The calendar module
+import calendar  
+
+c = calendar.Calendar()
+
+for iter in c.itermonthdays(2019, 11):
+    print(iter, end=" ")
+
+for iter in c.itermonthdays2(2019, 11):
+    print(iter, end=" ")
+
+for iter in c.itermonthdays3(2019, 11):
+    print(iter, end=" ")    
+    
+for iter in c.itermonthdays4(2019, 11):
+    print(iter, end=" ")    
+    
+# 4.6.1.12 The calendar module  
+import calendar  
+
+c = calendar.Calendar()
+
+for data in c.monthdays2calendar(2020, 12):
+    print(data)
+
+
+import calendar
+print(calendar.month(2020, 9))
+
