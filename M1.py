@@ -42,7 +42,6 @@ from math import sin, pi
 
 print(sin(pi / 2))
 
-
 import math
 for name in dir(math):
     print(name, end="\t")
