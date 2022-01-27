@@ -97,6 +97,7 @@ from platform import platform
 print(platform())
 print(platform(1))
 print(platform(0, 1))
+print(platform(0, 0))
 
 # 1.2.1.11 Useful modules | platform
 from platform import machine
