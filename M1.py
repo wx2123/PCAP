@@ -121,3 +121,8 @@ print(python_implementation())
 
 for atr in python_version_tuple():
     print(atr)
+
+
+import platform
+
+print((platform.python_version_tuple()))
