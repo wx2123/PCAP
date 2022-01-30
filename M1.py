@@ -126,3 +126,32 @@ for atr in python_version_tuple():
 import platform
 
 print((platform.python_version_tuple()))
+
+
+
+
+# 1.4.1.14 How to use pip
+
+import pygame
+
+run = True
+width = 400
+height = 100
+pygame.init()
+screen = pygame.display.set_mode((width, height))
+font = pygame.font.SysFont(None, 48)
+text = font.render("Welcome to pygame", True, (255, 255, 255))
+screen.blit(text, ((width - text.get_width()) // 2, (height - text.get_height()) // 2))
+pygame.display.flip()
+while run:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT\
+        or event.type == pygame.MOUSEBUTTONUP\
+        or event.type == pygame.KEYUP:
+            run = False
+
+
+import math
+
+result = math.e != math.pow(2,4)
+print(int(result))

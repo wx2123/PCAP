@@ -131,7 +131,3 @@ sys.path.append("D:\\Python\\Project\\Modules")
 pip help
 
 pip help operation
-
-pip show package_name
-
-pip show pip
