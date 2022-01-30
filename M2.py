@@ -20,6 +20,29 @@ print(len(empty))
 i_am = 'I\'m'
 print(len(i_am))
 
+# 2.2.1.2 The nature of strings in Python
+
+multiline = '''Line #1
+Line #2'''
+
+print(len(multiline))
+
+
+multiline = """Line #1
+Line #2"""
+print(len(multiline))
+
+
+# 2.2.1.3 The nature of strings in Python
+str1 = 'a'
+str2 = 'b'
+
+print(str1 + str2)
+print(str2 + str1)
+print(5 * 'a')
+print('b' * 4)
+
+
 # 2.2.1.4 The nature of strings in Python
 
 # Demonstrating the ord() function.
