@@ -232,10 +232,8 @@ print("Moooo".isupper())
 print('moooo'.isupper())
 print('MOOOO'.isupper())
 
-
 # 2.3.1.10 String methods
 print("pythoninstitute.org".lstrip(".org"))
-
 
 # 2.3.1.11 String methods
 
@@ -246,6 +244,46 @@ print("Apple juice".replace("juice", ""))
 
 print("This is it!".replace("is", "are", 1))
 print("This is it!".replace("is", "are", 2))
+
+# 2.3.1.12 String methods
+# Demonstrating the rfind() method:
+print("tau tau tau".rfind("ta"))
+print("tau tau tau".rfind("ta", 9))
+print("tau tau tau".rfind("ta", 3, 9))
+
+
+# 2.3.1.13 String methods
+# Demonstrating the rstrip() method:
+print("[" + " upsilon ".rstrip() + "]")
+print("cisco.com".rstrip(".com"))
+
+# 2.3.1.14 String methods
+# Demonstrating the split() method:
+print("phi       chi\npsi".split())  #['phi', 'chi', 'psi']
+
+# 2.3.1.15 String methods
+# Demonstrating the startswith() method:
+print("omega".startswith("meg"))  #False
+print("omega".startswith("om"))   #True
+
+# 2.3.1.16 String methods
+# Demonstrating the strip() method:
+print("[" + "   aleph   ".strip() + "]")  # [aleph]
+
+# Demonstrating the swapcase() method:
+print("I know that I know nothing.".swapcase())
+# Output: i KNOW THAT i KNOW NOTHING.
+
+# Demonstrating the title() method:
+print("I know that I know nothing. Part 1.".title())
+# Output: I Know That I Know Nothing. Part 1.
+
+
+# Demonstrating the upper() method:
+print("I know that I know nothing. Part 2.".upper())
+#output I KNOW THAT I KNOW NOTHING. PART 2.
+
+
 
 # 2.5.1.4 Four simple programs
 
