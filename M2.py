@@ -283,6 +283,26 @@ print("I know that I know nothing. Part 1.".title())
 print("I know that I know nothing. Part 2.".upper())
 #output I KNOW THAT I KNOW NOTHING. PART 2.
 
+# 2.3.1.18 Your own split
+
+def mysplit(strng):
+        A = ""
+        B = []
+        for i in strng:
+                if i != " ":
+                        A += i
+                        
+                else:
+                        B.append(A)
+                        A = ""
+
+        return(B)
+                        
+print(mysplit("To be or not to be, that is the question"))
+print(mysplit("To be or not to be,that is the question"))
+print(mysplit("   "))
+print(mysplit(" abc "))
+print(mysplit(""))
 
 
 # 2.5.1.4 Four simple programs
