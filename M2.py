@@ -305,6 +305,21 @@ print(mysplit(" abc "))
 print(mysplit(""))
 
 
+# 2.4.1.5 SECTION SUMMARY
+s1 = 'Where are the snows of yesteryear?'
+s2 = s1.split()
+s3 = sorted(s2)
+print(s3[1])
+
+
+s1 = '12.8'
+i = int(s1)
+s2 = str(i)
+f = float(s2)
+print(s1 == s2)
+
+
+
 # 2.5.1.4 Four simple programs
 
 # IBAN Validator.
