@@ -385,6 +385,33 @@ for char in text:
 print(cipher)
 
 
+try:
+    print("alpha"[1/0])
+except ZeroDivisionError:
+    print("zero")
+except IndexError:
+    print("index")
+except:
+    print("some")
+
+# 2.7.1.2 The anatomy of exceptions
+try:
+    y = 1 / 0
+except ZeroDivisionError:
+    print("Oooppsss...")
+
+print("THE END.")
+
+try:
+    y = 1 / 0
+except ArithmeticError:
+    print("Oooppsss...")
+
+print("THE END.")
+
+
+
+
 # 2.7.1.4 The anatomy of exceptions
 def bad_fun(n):
     try:
