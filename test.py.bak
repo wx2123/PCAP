@@ -610,3 +610,17 @@ except:
 # Check: zero
 
 
+try:
+    y = 1 / 0
+except ZeroDivisionError:
+    print("Oooppsss...")
+print("THE END.")
+
+try:
+    y = 1 / 0
+except ArithmeticError:
+    print("Oooppsss...")
+print("THE END.")
+
+
+
