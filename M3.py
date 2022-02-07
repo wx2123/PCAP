@@ -87,11 +87,14 @@ class Stack:
 
 stack_object_1 = Stack()
 stack_object_2 = Stack()
+stack_object_3 = Stack()
 
 stack_object_1.push(3)
 stack_object_2.push(stack_object_1.pop())
+stack_object_3.push(4)
 
 print(stack_object_2.pop())
+print(stack_object_3.pop())
 
 
 # 3.2.1.9 A short journey from procedural to object approach

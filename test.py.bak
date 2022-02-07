@@ -623,4 +623,183 @@ except ArithmeticError:
 print("THE END.")
 
 
+try:
+    y = 1 / 0
+except ZeroDivisionError:
+    print("Zero Division!")
+except ArithmeticError:
+    print("Arithmetic problem!")
+print("THE END.")
 
+try:
+    y = 1 / 0
+except ArithmeticError:
+    print("Arithmetic problem!")
+except ZeroDivisionError:
+    print("Zero Division!")
+print("THE END.")
+
+def bad_fun(n):
+    try:
+        return 1 / n
+    except ArithmeticError:
+        print("Arithmetic Problem!")
+    return None
+bad_fun(0)
+print("THE END.")
+
+
+def bad_fun(n):
+    return 1 / n
+try:
+    bad_fun(0)
+except ArithmeticError:
+    print("What happened? An exception was raised!")
+print("THE END.")
+
+
+raise exc
+
+def bad_fun(n):
+    raise ZeroDivisionError
+try:
+    bad_fun(0)
+except ArithmeticError:
+    print("What happened? An error?")
+print("THE END.")
+
+raise
+
+def bad_fun(n):
+    try:
+        return n / 0
+    except:
+        print("I did it again!")
+        raise
+try:
+    bad_fun(0)
+except ArithmeticError:
+    print("I see!")
+print("THE END.")
+
+
+
+assert expression
+
+
+import math
+x = float(input("Enter a number: "))
+assert x >= 0.0
+x = math.sqrt(x)
+print(x)
+
+try:
+    print(1/0)
+except ZeroDivisionError:
+    print("zero")
+except ArithmeticError:
+    print("arith")
+except:
+    print("some")
+    
+    
+
+try:
+    print(1/0)
+except ArithmeticError:
+    print("arith")
+except ZeroDivisionError:
+    print("zero")
+except:
+    print("some")
+
+
+def foo(x):
+    assert x
+    return 1/x
+try:
+    print(foo(0))
+except ZeroDivisionError:
+    print("zero")
+except:
+    print("some")
+    
+from math import tan, radians
+angle = int(input('Enter integral angle in degrees: '))
+# We must be sure that angle != 90 + k * 180
+assert angle % 180 != 90
+print(tan(radians(angle)))
+
+
+# The code shows an extravagant way
+# of leaving the loop.
+the_list = [1, 2, 3, 4, 5]
+ix = 0
+do_it = True
+while do_it:
+    try:
+        print(the_list[ix])
+        ix += 1
+    except IndexError:
+        do_it = False
+print('Done')
+
+
+# This code cannot be terminated by pressing Ctrl-C.
+from time import sleep
+seconds = 0
+while True:
+    try:
+        print(seconds)
+        seconds += 1
+        sleep(1)
+    except KeyboardInterrupt:
+        print("Don't do that!")
+        
+        
+Code:
+# This code causes the MemoryError exception.
+# Warning: executing this code may affect your OS.
+# Don't run it in production environments!
+string = 'x'
+try:
+    while True:
+        string = string + string
+        print(len(string))
+except MemoryError:
+    print('This is not funny!')
+    
+    
+# The code prints subsequent
+# values of exp(k), k = 1, 2, 4, 8, 16, ...
+from math import exp
+ex = 1
+try:
+    while True:
+        print(exp(ex))
+        ex *= 2
+except OverflowError:
+    print('The number is too big.')
+
+
+
+# One of these imports will fail - which one?
+try:
+    import math
+    import time
+    import abracadabra
+except:
+    print('One of your imports has failed.')
+
+
+
+# How to abuse the dictionary
+# and how to deal with it?
+dictionary = { 'a': 'b', 'b': 'c', 'c': 'd' }
+ch = 'a'
+try:
+    while True:
+        ch = dictionary[ch]
+        print(ch)
+except KeyError:
+    print('No such key:', ch)
