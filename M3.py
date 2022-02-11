@@ -278,7 +278,6 @@ try:
 except AttributeError:
     pass
 
-
 class ExampleClass:
     def __init__(self, val):
         if val % 2 != 0:
