@@ -1062,3 +1062,167 @@ print(ExampleClass.__dict__)
 example_object = ExampleClass(2)
 print(ExampleClass.__dict__)
 print(example_object.__dict__)
+
+
+class ExampleClass:
+    def __init__(self, val):
+        if val % 2 != 0:
+            self.a = 1
+        else:
+            self.b = 1
+
+example_object = ExampleClass(1)
+print(example_object.a)
+print(example_object.b)
+
+
+class ExampleClass:
+    def __init__(self, val):
+        if val % 2 != 0:
+            self.a = 1
+        else:
+            self.b = 1
+example_object = ExampleClass(1)
+print(example_object.a)
+try:
+    print(example_object.b)
+except AttributeError:
+    pass
+    
+    
+class ExampleClass:
+    def __init__(self, val):
+        if val % 2 != 0:
+            self.a = 1
+        else:
+            self.b = 1
+example_object = ExampleClass(1)
+print(example_object.a)
+if hasattr(example_object, 'b'):
+    print(example_object.b)
+    
+class ExampleClass:
+    attr = 1
+print(hasattr(ExampleClass, 'attr'))  # True
+print(hasattr(ExampleClass, 'prop'))  # False
+
+class ExampleClass:
+    a = 1
+    def __init__(self):
+        self.b = 2
+example_object = ExampleClass()
+print(hasattr(example_object, 'b'))  # True
+print(hasattr(example_object, 'a'))  # True
+print(hasattr(ExampleClass, 'b'))    # False
+print(hasattr(ExampleClass, 'a'))    # True
+
+
+class Sample:
+    gamma = 0 # Class variable.
+    def __init__(self):
+        self.alpha = 1 # Instance variable.
+        self.__delta = 3 # Private instance variable.
+obj = Sample()
+obj.beta = 2 # Another instance variable (existing only inside the "obj" instance.)
+print(obj.__dict__)
+
+
+class Python:
+    population = 1
+    victims = 0
+    def __init__(self):
+        self.length_ft = 3
+        self.__venomous = False
+
+
+class Classy:
+    def method(self):
+        print("method")
+obj = Classy()
+obj.method()
+
+
+class Classy:
+    def method(self, par):
+        print("method:", par)
+obj = Classy()
+obj.method(1) #output: 1
+obj.method(2) #output: 2
+obj.method(3) #output: 3
+
+
+class Classy:
+    varia = 2
+    def method(self):
+        print(self.varia, self.var)
+obj = Classy()
+obj.var = 3
+obj.method()
+
+
+class Classy:
+    def other(self):
+        print("other")
+    def method(self):
+        print("method")
+        self.other()
+obj = Classy()
+obj.method()
+
+
+class Classy:
+    def __init__(self, value):
+        self.var = value
+obj_1 = Classy("object")
+print(obj_1.var)
+
+
+class Classy:
+    def __init__(self, value = None):
+        self.var = value
+
+obj_1 = Classy("object")
+obj_2 = Classy()
+
+print(obj_1.var) #output: object
+print(obj_2.var) #output: None
+
+
+class Classy:
+    def visible(self):
+        print("visible")    
+    def __hidden(self):
+        print("hidden")
+obj = Classy()
+obj.visible()
+try:
+    obj.__hidden()
+except:
+    print("failed")
+obj._Classy__hidden()
+
+class Classy:
+    varia = 1
+    def __init__(self):
+        self.var = 2
+    def method(self):
+        pass
+    def __hidden(self):
+        pass
+obj = Classy()
+print(obj.__dict__)
+print(Classy.__dict__)
+
+class Classy:
+    pass
+print(Classy.__name__)
+obj = Classy()
+print(type(obj).__name__)
+
+print(obj.__name__)
+
+class Classy:
+    pass
+print(Classy.__module__)
+obj = Classy()
+print(obj.__module__)

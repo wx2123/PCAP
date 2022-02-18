@@ -364,6 +364,35 @@ obj_1 = Classy("object")
 
 print(obj_1.var)
 
+# 3.4.1.4 OOP: Methods
+class Classy:
+    def __init__(self, value = None):
+        self.var = value
+
+obj_1 = Classy("object")
+obj_2 = Classy()
+
+print(obj_1.var)
+print(obj_2.var)
+
+
+class Classy:
+    def visible(self):
+        print("visible")
+    
+    def __hidden(self):
+        print("hidden")
+
+obj = Classy()
+obj.visible()
+
+try:
+    obj.__hidden()
+except:
+    print("failed")
+
+obj._Classy__hidden()
+
 
 
 # 3.4.1.5 OOP: Methods
