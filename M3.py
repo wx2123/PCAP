@@ -285,7 +285,6 @@ class ExampleClass:
         else:
             self.b = 1
 
-
 example_object = ExampleClass(1)
 print(example_object.a)
 
@@ -297,7 +296,6 @@ if hasattr(example_object, 'b'):
 
 class ExampleClass:
     attr = 1
-
 
 print(hasattr(ExampleClass, 'attr'))
 print(hasattr(ExampleClass, 'prop'))
