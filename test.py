@@ -2328,3 +2328,27 @@ except IOError:
     print("failed")
 else:
     print("success")
+
+
+class Snake:
+    def __init__(self):
+        self.victims = 0
+
+
+class Snake:
+    def __init__(self):
+        self.victims = 0
+    def increment(self):
+        self.victims += 1
+        
+        
+class Snake:
+    def __init__(self, victims):
+        self.victims = victims	
+        
+class Snake:
+    pass
+class Python(Snake):
+    pass
+print(Python.__name__, 'is a', Snake.__name__)
+print(Python.__bases__[0].__name__, 'can be', Python.__name__)

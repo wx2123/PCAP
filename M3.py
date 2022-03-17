@@ -318,7 +318,7 @@ print(hasattr(ExampleClass, 'a'))
 
 class Classy:
     def method(self):
-        print("method")
+        print("method2")
 obj = Classy()
 obj.method()
 
@@ -333,7 +333,7 @@ obj.method(3)
 
 # 3.4.1.2 OOP: Methods
 class Classy:
-    varia = 2
+    varia = 4
     def method(self):
         print(self.varia, self.var)
 obj = Classy()
@@ -417,6 +417,14 @@ class Classy:
 print(Classy.__name__)
 obj = Classy()
 print(type(obj).__name__)
+
+# 3.4.1.7 OOP: Methods
+class Classy:
+    pass
+print(Classy.__module__)
+obj = Classy()
+print(obj.__module__)
+
 
 
 # 3.4.1.8 OOP: Methods
