@@ -498,14 +498,11 @@ print(sun)
 class Vehicle:
     pass
 
-
 class LandVehicle(Vehicle):
     pass
 
-
 class TrackedVehicle(LandVehicle):
     pass
-
 
 for cls1 in [Vehicle, LandVehicle, TrackedVehicle]:
     for cls2 in [Vehicle, LandVehicle, TrackedVehicle]:
@@ -516,14 +513,11 @@ for cls1 in [Vehicle, LandVehicle, TrackedVehicle]:
 class Vehicle:
     pass
 
-
 class LandVehicle(Vehicle):
     pass
 
-
 class TrackedVehicle(LandVehicle):
     pass
-
 
 my_vehicle = Vehicle()
 my_land_vehicle = LandVehicle()
@@ -568,7 +562,6 @@ class Super:
 class Sub(Super):
     def __init__(self, name):
         Super.__init__(self, name)
-
 
 obj = Sub("Andy")
 
