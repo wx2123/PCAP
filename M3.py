@@ -588,10 +588,8 @@ print(obj)
 class Super:
     supVar = 1
 
-
 class Sub(Super):
     subVar = 2
-
 
 obj = Sub()
 
@@ -794,7 +792,6 @@ class Vehicle:
         time.sleep(0.25)
         self.controller.change_direction(left, False)
 
-
 wheeled = Vehicle(Wheels())
 tracked = Vehicle(Tracks())
 
@@ -808,23 +805,46 @@ class Top:
     def m_top(self):
         print("top")
 
-
 class Middle(Top):
     def m_middle(self):
         print("middle")
 
-
 class Bottom(Middle):
     def m_bottom(self):
         print("bottom")
-
 
 object = Bottom()
 object.m_bottom()
 object.m_middle()
 object.m_top()
 
+class Top:
+    def m_top(self):
+        print("top")
+class Middle(Top):
+    def m_middle(self):
+        print("middle")
+class Bottom(Middle, Top):
+    def m_bottom(self):
+        print("bottom")
+object = Bottom()
+object.m_bottom()
+object.m_middle()
+object.m_top()
 
+class Top:
+    def m_top(self):
+        print("top")
+class Middle(Top):
+    def m_middle(self):
+        print("middle")
+class Bottom(Top, Middle):
+    def m_bottom(self):
+        print("bottom")
+object = Bottom()
+object.m_bottom()
+object.m_middle()
+object.m_top()
 
 
 class Mouse:
@@ -840,6 +860,25 @@ class AncientMouse(Mouse):
 
 mus = AncientMouse("Caesar")  # Prints "Meum nomen est Caesar"
 print(mus)
+
+
+# 3.5.1.21 OOP Fundamentals: MRO: The diamond problem
+class Top:
+    def m_top(self):
+        print("top")
+class Middle_Left(Top):
+    def m_middle(self):
+        print("middle_left")
+class Middle_Right(Top):
+    def m_middle(self):
+        print("middle_right")
+class Bottom(Middle_Left, Middle_Right):
+    def m_bottom(self):
+        print("bottom")
+object = Bottom()
+object.m_bottom()
+object.m_middle()
+object.m_top()
 
 
 # 3.5.1.23 SECTION SUMMARY 2/2
