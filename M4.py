@@ -171,9 +171,8 @@ for v in (1 if x % 2 == 0 else 0 for x in range(10)):
     print(v, end=" ")
 print()
 
-
 # 4.1.1.9 Generators and closures
-two = lambda: 2
+two = lambda: 3
 sqr = lambda x: x * x
 pwr = lambda x, y: x ** y
 
@@ -193,7 +192,7 @@ def poly(x):
 print_function([x for x in range(-2, 3)], poly)
 
 
-#---
+#--- using lambda function
 def print_function(args, fun):
     for x in args:
         print('f(', x,')=', fun(x), sep='')
