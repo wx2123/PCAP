@@ -248,6 +248,20 @@ for x in (el * 2 for el in range(5)):
     print(x)
 
 # 4.1.1.15 Generators and closures
+short_list = [1, "Python", -1, "Monty"]
+new_list = list(filter(lambda s: isinstance(s, str), short_list))
+print(new_list)  # outputs ['Python', 'Monty'].
+
+def tag(tg):
+    tg2 = tg
+    tg2 = tg[0] + '/' + tg[1:]
+    def inner(str):
+        return tg + str + tg2
+    return inner
+b_tag = tag('<b>')
+print(b_tag('Monty Python')) # outputs <b>Monty Python</b>
+
+
 
 # Ex1
 class Vowels:
