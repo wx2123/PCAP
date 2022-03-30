@@ -480,8 +480,6 @@ except IOError as e:
     print("I/O error occurred:", strerror(e.errno))
 
 
-
-
 # 4.3.1.12 Working with real files
 from os import strerror
 
