@@ -574,21 +574,24 @@ dst.close()
 
 # 4.4.1.2 The os module
 import os
-print(os.uname())
+print(os.uname()) # work in UNIX
+
+import platform
+print(platform.uname()) # work in Windows
 
 
 # 4.4.1.3 The os module
 import os
 
-os.mkdir("my_first_directory")
+os.mkdir("my_first_directory2")
 print(os.listdir())
 
 
 # # 4.4.1.4 The os module
 import os
 
-os.makedirs("my_first_directory/my_second_directory")
-os.chdir("my_first_directory")
+os.makedirs("my_first_directory3/my_second_directory4")
+os.chdir("my_first_directory2")
 print(os.listdir())
 
 
@@ -601,6 +604,15 @@ print(os.getcwd())
 os.chdir("my_second_directory")
 print(os.getcwd())
 
+# # # 4.4.1.6 The os module
+import os
+
+os.mkdir("my_first_directory")
+print(os.listdir())
+os.rmdir("my_first_directory")
+print(os.listdir())
+
+
 # 4.4.1.7 The os module
 import os
 
@@ -608,11 +620,16 @@ returned_value = os.system("mkdir my_first_directory")
 print(returned_value)
 
 
+import os
+os.makedirs("my_first_directory/my_second_directory")
+os.removedirs("my_first_directory/my_second_directory")
+print(os.listdir())
+
+
+
 # 4.4.1.8 The os module: LAB
 
 import os
-
-
 
 # 4.5.1.2 The datetime module
 
@@ -782,12 +799,10 @@ from datetime import datetime
 
 d1 = date(2020, 11, 4)
 d2 = date(2019, 11, 4)
-
 print(d1 - d2)
 
 dt1 = datetime(2020, 11, 4, 0, 0, 0)
 dt2 = datetime(2019, 11, 4, 14, 53, 0)
-
 print(dt1 - dt2)
 
 # 4.5.1.20 The datetime and time modules (continued)
