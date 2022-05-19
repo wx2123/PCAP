@@ -20,6 +20,29 @@ print(len(empty))
 i_am = 'I\'m'
 print(len(i_am))
 
+# 2.2.1.2 The nature of strings in Python
+
+multiline = '''Line #1
+Line #2'''
+
+print(len(multiline))
+
+
+multiline = """Line #1
+Line #2"""
+print(len(multiline))
+
+
+# 2.2.1.3 The nature of strings in Python
+str1 = 'a'
+str2 = 'b'
+
+print(str1 + str2)
+print(str2 + str1)
+print(5 * 'a')
+print('b' * 4)
+
+
 # 2.2.1.4 The nature of strings in Python
 
 # Demonstrating the ord() function.
@@ -209,10 +232,8 @@ print("Moooo".isupper())
 print('moooo'.isupper())
 print('MOOOO'.isupper())
 
-
 # 2.3.1.10 String methods
 print("pythoninstitute.org".lstrip(".org"))
-
 
 # 2.3.1.11 String methods
 
@@ -223,6 +244,81 @@ print("Apple juice".replace("juice", ""))
 
 print("This is it!".replace("is", "are", 1))
 print("This is it!".replace("is", "are", 2))
+
+# 2.3.1.12 String methods
+# Demonstrating the rfind() method:
+print("tau tau tau".rfind("ta"))
+print("tau tau tau".rfind("ta", 9))
+print("tau tau tau".rfind("ta", 3, 9))
+
+
+# 2.3.1.13 String methods
+# Demonstrating the rstrip() method:
+print("[" + " upsilon ".rstrip() + "]")
+print("cisco.com".rstrip(".com"))
+
+# 2.3.1.14 String methods
+# Demonstrating the split() method:
+print("phi       chi\npsi".split())  #['phi', 'chi', 'psi']
+
+# 2.3.1.15 String methods
+# Demonstrating the startswith() method:
+print("omega".startswith("meg"))  #False
+print("omega".startswith("om"))   #True
+
+# 2.3.1.16 String methods
+# Demonstrating the strip() method:
+print("[" + "   aleph   ".strip() + "]")  # [aleph]
+
+# Demonstrating the swapcase() method:
+print("I know that I know nothing.".swapcase())
+# Output: i KNOW THAT i KNOW NOTHING.
+
+# Demonstrating the title() method:
+print("I know that I know nothing. Part 1.".title())
+# Output: I Know That I Know Nothing. Part 1.
+
+
+# Demonstrating the upper() method:
+print("I know that I know nothing. Part 2.".upper())
+#output I KNOW THAT I KNOW NOTHING. PART 2.
+
+# 2.3.1.18 Your own split
+
+def mysplit(strng):
+        A = ""
+        B = []
+        for i in strng:
+                if i != " ":
+                        A += i
+                        
+                else:
+                        B.append(A)
+                        A = ""
+
+        return(B)
+                        
+print(mysplit("To be or not to be, that is the question"))
+print(mysplit("To be or not to be,that is the question"))
+print(mysplit("   "))
+print(mysplit(" abc "))
+print(mysplit(""))
+
+
+# 2.4.1.5 SECTION SUMMARY
+s1 = 'Where are the snows of yesteryear?'
+s2 = s1.split()
+s3 = sorted(s2)
+print(s3[1])
+
+
+s1 = '12.8'
+i = int(s1)
+s2 = str(i)
+f = float(s2)
+print(s1 == s2)
+
+
 
 # 2.5.1.4 Four simple programs
 
@@ -287,6 +383,33 @@ for char in text:
         cipher += chr(code)
 
 print(cipher)
+
+
+try:
+    print("alpha"[1/0])
+except ZeroDivisionError:
+    print("zero")
+except IndexError:
+    print("index")
+except:
+    print("some")
+
+# 2.7.1.2 The anatomy of exceptions
+try:
+    y = 1 / 0
+except ZeroDivisionError:
+    print("Oooppsss...")
+
+print("THE END.")
+
+try:
+    y = 1 / 0
+except ArithmeticError:
+    print("Oooppsss...")
+
+print("THE END.")
+
+
 
 
 # 2.7.1.4 The anatomy of exceptions

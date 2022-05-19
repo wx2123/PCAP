@@ -73,7 +73,6 @@ def fun(n):
     for i in range(n):
         yield i
 
-
 for v in fun(5):
     print(v)
 
@@ -172,9 +171,8 @@ for v in (1 if x % 2 == 0 else 0 for x in range(10)):
     print(v, end=" ")
 print()
 
-
 # 4.1.1.9 Generators and closures
-two = lambda: 2
+two = lambda: 3
 sqr = lambda x: x * x
 pwr = lambda x, y: x ** y
 
@@ -194,7 +192,7 @@ def poly(x):
 print_function([x for x in range(-2, 3)], poly)
 
 
-#---
+#--- using lambda function
 def print_function(args, fun):
     for x in args:
         print('f(', x,')=', fun(x), sep='')
@@ -250,6 +248,20 @@ for x in (el * 2 for el in range(5)):
     print(x)
 
 # 4.1.1.15 Generators and closures
+short_list = [1, "Python", -1, "Monty"]
+new_list = list(filter(lambda s: isinstance(s, str), short_list))
+print(new_list)  # outputs ['Python', 'Monty'].
+
+def tag(tg):
+    tg2 = tg
+    tg2 = tg[0] + '/' + tg[1:]
+    def inner(str):
+        return tg + str + tg2
+    return inner
+b_tag = tag('<b>')
+print(b_tag('Monty Python')) # outputs <b>Monty Python</b>
+
+
 
 # Ex1
 class Vowels:
@@ -284,6 +296,12 @@ def replace_spaces(replacement='*'):
 
 stars = replace_spaces()
 print(stars("And Now for Something Completely Different"))
+
+# 4.3.1.1 Working with real files
+stream = open("text.txt", "rt", encoding = "utf-8")
+print(stream.read()) # printing the content of the file
+
+
 
 # 4.3.1.2 Working with real files
 
@@ -324,7 +342,7 @@ except IOError as e:
     print("I/O error occurred: ", strerror(e.errno))
 
 
-# 4.3.1.6 Working with real files
+# 4.3.1.4 Working with real files
 
 from os import strerror
 
@@ -340,6 +358,50 @@ try:
 except IOError as e:
 	print("I/O error occurred: ", strerror(e.errno))
 
+# 4.3.1.5 Working with real files
+s = open("text.txt")
+print(s.readlines(20))
+print(s.readlines(20))
+print(s.readlines(20))
+print(s.readlines(20))
+s.close()
+
+#---------------
+from os import strerror
+
+try:
+    ccnt = lcnt = 0
+    s = open('text.txt', 'rt')
+    lines = s.readlines(20)
+    while len(lines) != 0:
+        for line in lines:
+            lcnt += 1
+            for ch in line:
+                print(ch, end='')
+                ccnt += 1
+        lines = s.readlines(10)
+    s.close()
+    print("\n\nCharacters in file:", ccnt)
+    print("Lines in file:     ", lcnt)
+except IOError as e:
+    print("I/O error occurred:", strerror(e.errno))
+
+
+# 4.3.1.6 Working with real files
+from os import strerror
+try:
+	ccnt = lcnt = 0
+	for line in open('text.txt', 'rt'):
+		lcnt += 1
+		for ch in line:
+			print(ch, end='')
+			ccnt += 1
+	print("\n\nCharacters in file:", ccnt)
+	print("Lines in file:     ", lcnt)
+except IOError as e:
+	print("I/O error occurred: ", strerror(e.errno))
+
+
 # 4.3.1.7 Working with real files
 
 from os import strerror
@@ -347,7 +409,7 @@ from os import strerror
 try:
 	fo = open('newtext.txt', 'wt') # A new file (newtext.txt) is created.
 	for i in range(10):
-		s = "line #" + str(i+1) + "\n"
+		s = "line: #" + str(i+1) + "\n"
 		for ch in s:
 			fo.write(ch)
 	fo.close()
@@ -366,8 +428,13 @@ try:
 except IOError as e:
     print("I/O error occurred: ", strerror(e.errno))
 
+import sys
+sys.stderr.write("Error message")
 
+
+# 4.3.1.9 Working with real files
 data = bytearray(10)
+data
 
 # 4.3.1.10 Working with real files
 
@@ -379,7 +446,7 @@ for i in range(len(data)):
 for b in data:
     print(hex(b))
 
-# 4.3.1.10 Working with real files
+# 4.3.1.11 Working with real files
 from os import strerror
 
 data = bytearray(10)
@@ -395,12 +462,15 @@ except IOError as e:
     print("I/O error occurred:", strerror(e.errno))
 
 # Your code that reads bytes from the stream should go here.
+
+
+
 from os import strerror
 
 data = bytearray(10)
 
 try:
-    bf = open('file.bin', 'rb')
+    bf = open('file2.bin', 'rb')
     bf.readinto(data)
     bf.close()
 
@@ -408,6 +478,7 @@ try:
         print(hex(b), end=' ')
 except IOError as e:
     print("I/O error occurred:", strerror(e.errno))
+
 
 # 4.3.1.12 Working with real files
 from os import strerror
@@ -503,21 +574,24 @@ dst.close()
 
 # 4.4.1.2 The os module
 import os
-print(os.uname())
+print(os.uname()) # work in UNIX
+
+import platform
+print(platform.uname()) # work in Windows
 
 
 # 4.4.1.3 The os module
 import os
 
-os.mkdir("my_first_directory")
+os.mkdir("my_first_directory2")
 print(os.listdir())
 
 
 # # 4.4.1.4 The os module
 import os
 
-os.makedirs("my_first_directory/my_second_directory")
-os.chdir("my_first_directory")
+os.makedirs("my_first_directory3/my_second_directory4")
+os.chdir("my_first_directory2")
 print(os.listdir())
 
 
@@ -530,6 +604,15 @@ print(os.getcwd())
 os.chdir("my_second_directory")
 print(os.getcwd())
 
+# # # 4.4.1.6 The os module
+import os
+
+os.mkdir("my_first_directory")
+print(os.listdir())
+os.rmdir("my_first_directory")
+print(os.listdir())
+
+
 # 4.4.1.7 The os module
 import os
 
@@ -537,11 +620,16 @@ returned_value = os.system("mkdir my_first_directory")
 print(returned_value)
 
 
+import os
+os.makedirs("my_first_directory/my_second_directory")
+os.removedirs("my_first_directory/my_second_directory")
+print(os.listdir())
+
+
+
 # 4.4.1.8 The os module: LAB
 
 import os
-
-
 
 # 4.5.1.2 The datetime module
 
@@ -711,12 +799,10 @@ from datetime import datetime
 
 d1 = date(2020, 11, 4)
 d2 = date(2019, 11, 4)
-
 print(d1 - d2)
 
 dt1 = datetime(2020, 11, 4, 0, 0, 0)
 dt2 = datetime(2019, 11, 4, 14, 53, 0)
-
 print(dt1 - dt2)
 
 # 4.5.1.20 The datetime and time modules (continued)

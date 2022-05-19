@@ -87,11 +87,14 @@ class Stack:
 
 stack_object_1 = Stack()
 stack_object_2 = Stack()
+stack_object_3 = Stack()
 
 stack_object_1.push(3)
 stack_object_2.push(stack_object_1.pop())
+stack_object_3.push(4)
 
 print(stack_object_2.pop())
+print(stack_object_3.pop())
 
 
 # 3.2.1.9 A short journey from procedural to object approach
@@ -275,14 +278,12 @@ try:
 except AttributeError:
     pass
 
-
 class ExampleClass:
     def __init__(self, val):
         if val % 2 != 0:
             self.a = 1
         else:
             self.b = 1
-
 
 example_object = ExampleClass(1)
 print(example_object.a)
@@ -295,7 +296,6 @@ if hasattr(example_object, 'b'):
 
 class ExampleClass:
     attr = 1
-
 
 print(hasattr(ExampleClass, 'attr'))
 print(hasattr(ExampleClass, 'prop'))
@@ -318,8 +318,7 @@ print(hasattr(ExampleClass, 'a'))
 
 class Classy:
     def method(self):
-        print("method")
-
+        print("method2")
 obj = Classy()
 obj.method()
 
@@ -334,7 +333,7 @@ obj.method(3)
 
 # 3.4.1.2 OOP: Methods
 class Classy:
-    varia = 2
+    varia = 4
     def method(self):
         print(self.varia, self.var)
 obj = Classy()
@@ -363,6 +362,35 @@ obj_1 = Classy("object")
 
 print(obj_1.var)
 
+# 3.4.1.4 OOP: Methods
+class Classy:
+    def __init__(self, value = None):
+        self.var = value
+
+obj_1 = Classy("object")
+obj_2 = Classy()
+
+print(obj_1.var)
+print(obj_2.var)
+
+
+class Classy:
+    def visible(self):
+        print("visible")
+    
+    def __hidden(self):
+        print("hidden")
+
+obj = Classy()
+obj.visible()
+
+try:
+    obj.__hidden()
+except:
+    print("failed")
+
+obj._Classy__hidden()
+
 
 
 # 3.4.1.5 OOP: Methods
@@ -389,6 +417,14 @@ class Classy:
 print(Classy.__name__)
 obj = Classy()
 print(type(obj).__name__)
+
+# 3.4.1.7 OOP: Methods
+class Classy:
+    pass
+print(Classy.__module__)
+obj = Classy()
+print(obj.__module__)
+
 
 
 # 3.4.1.8 OOP: Methods
@@ -462,14 +498,11 @@ print(sun)
 class Vehicle:
     pass
 
-
 class LandVehicle(Vehicle):
     pass
 
-
 class TrackedVehicle(LandVehicle):
     pass
-
 
 for cls1 in [Vehicle, LandVehicle, TrackedVehicle]:
     for cls2 in [Vehicle, LandVehicle, TrackedVehicle]:
@@ -480,14 +513,11 @@ for cls1 in [Vehicle, LandVehicle, TrackedVehicle]:
 class Vehicle:
     pass
 
-
 class LandVehicle(Vehicle):
     pass
 
-
 class TrackedVehicle(LandVehicle):
     pass
-
 
 my_vehicle = Vehicle()
 my_land_vehicle = LandVehicle()
@@ -533,7 +563,6 @@ class Sub(Super):
     def __init__(self, name):
         Super.__init__(self, name)
 
-
 obj = Sub("Andy")
 
 print(obj)
@@ -559,10 +588,8 @@ print(obj)
 class Super:
     supVar = 1
 
-
 class Sub(Super):
     subVar = 2
-
 
 obj = Sub()
 
@@ -765,7 +792,6 @@ class Vehicle:
         time.sleep(0.25)
         self.controller.change_direction(left, False)
 
-
 wheeled = Vehicle(Wheels())
 tracked = Vehicle(Tracks())
 
@@ -779,23 +805,46 @@ class Top:
     def m_top(self):
         print("top")
 
-
 class Middle(Top):
     def m_middle(self):
         print("middle")
 
-
 class Bottom(Middle):
     def m_bottom(self):
         print("bottom")
-
 
 object = Bottom()
 object.m_bottom()
 object.m_middle()
 object.m_top()
 
+class Top:
+    def m_top(self):
+        print("top")
+class Middle(Top):
+    def m_middle(self):
+        print("middle")
+class Bottom(Middle, Top):
+    def m_bottom(self):
+        print("bottom")
+object = Bottom()
+object.m_bottom()
+object.m_middle()
+object.m_top()
 
+class Top:
+    def m_top(self):
+        print("top")
+class Middle(Top):
+    def m_middle(self):
+        print("middle")
+class Bottom(Top, Middle):
+    def m_bottom(self):
+        print("bottom")
+object = Bottom()
+object.m_bottom()
+object.m_middle()
+object.m_top()
 
 
 class Mouse:
@@ -811,6 +860,25 @@ class AncientMouse(Mouse):
 
 mus = AncientMouse("Caesar")  # Prints "Meum nomen est Caesar"
 print(mus)
+
+
+# 3.5.1.21 OOP Fundamentals: MRO: The diamond problem
+class Top:
+    def m_top(self):
+        print("top")
+class Middle_Left(Top):
+    def m_middle(self):
+        print("middle_left")
+class Middle_Right(Top):
+    def m_middle(self):
+        print("middle_right")
+class Bottom(Middle_Left, Middle_Right):
+    def m_bottom(self):
+        print("bottom")
+object = Bottom()
+object.m_bottom()
+object.m_middle()
+object.m_top()
 
 
 # 3.5.1.23 SECTION SUMMARY 2/2
@@ -937,13 +1005,11 @@ except Exception as e:
 class MyZeroDivisionError(ZeroDivisionError):	
     pass
 
-
 def do_the_division(mine):
     if mine:
         raise MyZeroDivisionError("some worse news")
     else:		
         raise ZeroDivisionError("some bad news")
-
 
 for mode in [False, True]:
     try:
